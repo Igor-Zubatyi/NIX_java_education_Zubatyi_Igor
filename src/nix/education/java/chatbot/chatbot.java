@@ -21,6 +21,24 @@ public class chatbot {
         int number = scanner.nextInt();
         for (int i = 0; i < number; i++) {
             System.out.println(i + "!");
+            System.out.println("В каком году я был создан?");
+            System.out.println("1. 2017");
+            System.out.println("2. 2018");
+            System.out.println("3. 2019");
+            System.out.println("4. 2020");
+            System.out.println("5. 2021");
+            boolean answer = false;
+            while (answer = false){
+                int ageOfCreating = scanner.nextInt();
+                if (ageOfCreating == 5) {
+                    answer = true;
+                    System.out.println("Great, you right!");
+                }
+                else System.out.println("Please, try again");
+            }
+            System.out.println("Goodbye, have a nice day!");
+            System.out.println("See you later!");
+        }
         }
     }
 
