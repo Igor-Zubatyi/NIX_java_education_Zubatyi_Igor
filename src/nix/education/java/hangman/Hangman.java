@@ -1,5 +1,6 @@
 package nix.education.java.hangman;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Hangman {
@@ -17,8 +18,14 @@ public class Hangman {
         return word;
     }
     static void result (String word){
-        if (word.equalsIgnoreCase("java"))
+        if (word.equalsIgnoreCase(randomWord()))
             System.out.println("You survived!");
-        else System.out.println("You lost");
+        else System.out.println("You lost " + randomWord());
     }
+    static String randomWord(){
+        Random random = new Random();
+        String[] wordsArray = new String[] {"python", "java", "javascript", "kotlin"};
+        String randomWord = wordsArray[random.nextInt(wordsArray.length)];
+        return randomWord;
+    };
 }
