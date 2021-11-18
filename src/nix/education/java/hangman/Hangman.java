@@ -1,5 +1,6 @@
 package nix.education.java.hangman;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class Hangman {
     static void result() {
         StringBuilder hiddenWord = new StringBuilder(randomWord);
         StringBuilder guessWord = new StringBuilder();
+        ArrayList<String> typedLetters = new ArrayList<String>();
         for (int i = 0; i < randomWord.length(); i++) {
             guessWord.append("-");
         }
@@ -33,26 +35,31 @@ public class Hangman {
             System.out.println("Input letter");
             System.out.println(guessWord);
             char nextLetter = attempt();
-
-            int indexOfLetter = hiddenWord.indexOf("" + nextLetter);
-            if (indexOfLetter != -1) {
-                while (indexOfLetter != -1) {
-                    hiddenWord.setCharAt(indexOfLetter, '-');
-                    guessWord.setCharAt(indexOfLetter, randomWord.charAt(indexOfLetter));
-                    if (randomWord.equals(guessWord.toString())) {
-                        System.out.println("You survived");
-                        System.out.println(guessWord);
-                        attempts = 0;
-                    }
-                    indexOfLetter = hiddenWord.indexOf("" + nextLetter);
-                }
+            if (typedLetters.contains("" + nextLetter)) {
+                System.out.println("No improvements");
+                attempts--;
             } else {
-                System.out.println("That letter doesn't appear in the word\n");
+                typedLetters.add("" + nextLetter);
+                int indexOfLetter = hiddenWord.indexOf("" + nextLetter);
+                if (indexOfLetter != -1) {
+                    while (indexOfLetter != -1) {
+                        hiddenWord.setCharAt(indexOfLetter, '-');
+                        guessWord.setCharAt(indexOfLetter, randomWord.charAt(indexOfLetter));
+                        if (randomWord.equals(guessWord.toString())) {
+                            System.out.println("You survived");
+                            System.out.println(guessWord);
+                            attempts = 0;
+                        }
+                        indexOfLetter = hiddenWord.indexOf("" + nextLetter);
+                    }
+                } else {
+                    System.out.println("That letter doesn't appear in the word");
+                    attempts--;
+                }
             }
-            attempts--;
         }
-        System.out.println("Thanks for playing!\n" +
-                "We'll see how well you did in the next stage\n");
+        System.out.println("Thanks for playing!" +
+                "We'll see how well you did in the next stage");
     }
 
     static String randomWord() {
