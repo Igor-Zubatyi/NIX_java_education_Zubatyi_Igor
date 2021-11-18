@@ -27,7 +27,7 @@ public class Hangman {
     static void result() {
         StringBuilder hiddenWord = new StringBuilder(randomWord);
         StringBuilder guessWord = new StringBuilder();
-        ArrayList<String> typedLetters = new ArrayList<String>();
+        ArrayList<String> typedLetters = new ArrayList<>();
         for (int i = 0; i < randomWord.length(); i++) {
             guessWord.append("-");
         }
@@ -35,26 +35,33 @@ public class Hangman {
             System.out.println("Input letter");
             System.out.println(guessWord);
             char nextLetter = attempt();
-            if (typedLetters.contains("" + nextLetter)) {
-                System.out.println("No improvements");
-                attempts--;
-            } else {
-                typedLetters.add("" + nextLetter);
-                int indexOfLetter = hiddenWord.indexOf("" + nextLetter);
-                if (indexOfLetter != -1) {
-                    while (indexOfLetter != -1) {
-                        hiddenWord.setCharAt(indexOfLetter, '-');
-                        guessWord.setCharAt(indexOfLetter, randomWord.charAt(indexOfLetter));
-                        if (randomWord.equals(guessWord.toString())) {
-                            System.out.println("You survived");
-                            System.out.println(guessWord);
-                            attempts = 0;
+            if (("" + nextLetter).length() != 1)
+                System.out.println("You should input a single letter.");
+            else {
+                if (!("" + nextLetter).matches("[a-z]+"))
+                    System.out.println("Please enter a lowercase English letter.");
+                else {
+                    if (typedLetters.contains("" + nextLetter)) {
+                        System.out.println("You've already guessed this letter.");
+                    } else {
+                        typedLetters.add("" + nextLetter);
+                        int indexOfLetter = hiddenWord.indexOf("" + nextLetter);
+                        if (indexOfLetter != -1) {
+                            while (indexOfLetter != -1) {
+                                hiddenWord.setCharAt(indexOfLetter, '-');
+                                guessWord.setCharAt(indexOfLetter, randomWord.charAt(indexOfLetter));
+                                if (randomWord.equals(guessWord.toString())) {
+                                    System.out.println("You survived");
+                                    System.out.println(guessWord);
+                                    attempts = 0;
+                                }
+                                indexOfLetter = hiddenWord.indexOf("" + nextLetter);
+                            }
+                        } else {
+                            System.out.println("That letter doesn't appear in the word");
+                            attempts--;
                         }
-                        indexOfLetter = hiddenWord.indexOf("" + nextLetter);
                     }
-                } else {
-                    System.out.println("That letter doesn't appear in the word");
-                    attempts--;
                 }
             }
         }
