@@ -10,13 +10,25 @@ public class Hangman {
 
     public static void main(String[] args) {
         welcome();
-        result();
+        menu();
     }
 
     static void welcome() {
         System.out.println("HANGMAN");
     }
-
+    static int menu(){
+        Scanner scanner = new Scanner(System.in);
+        boolean playing = true;
+        while (playing) {
+            System.out.println("Type \"play\" to play the game, \"exit\" to quit:");
+            String point = scanner.nextLine();
+            if(point.equalsIgnoreCase("play"))
+                result();
+            else if(point.equalsIgnoreCase("exit"))
+                playing = false;
+        }
+        return 0;
+    }
     static char attempt() {
         Scanner scanner = new Scanner(System.in);
         String letter = scanner.nextLine();
