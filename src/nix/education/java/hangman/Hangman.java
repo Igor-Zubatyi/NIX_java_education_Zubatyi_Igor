@@ -84,8 +84,8 @@ public class Hangman {
             System.out.println("That letter doesn't appear in the word");
             attempts--;
         }
-    }
 
+    }
      String randomWord() {
         Random random = new Random();
         String[] wordsArray = new String[]{"python", "java", "javascript", "kotlin"};
