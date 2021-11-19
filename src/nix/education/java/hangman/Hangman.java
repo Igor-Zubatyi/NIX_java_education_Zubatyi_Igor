@@ -74,7 +74,7 @@ public class Hangman {
                 hiddenWord.setCharAt(indexOfLetter, '-');
                 guessWord.setCharAt(indexOfLetter, randomWord.charAt(indexOfLetter));
                 if (randomWord.equals(guessWord.toString())) {
-                    System.out.println("You survived, Well-done");
+                    System.out.println("You survived!");
                     System.out.println(guessWord);
                     attempts = 0;
                 }
