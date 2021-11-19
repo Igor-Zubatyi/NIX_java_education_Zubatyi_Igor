@@ -85,6 +85,7 @@ public class Hangman {
             attempts--;
         }
     }
+
      String randomWord() {
         Random random = new Random();
         String[] wordsArray = new String[]{"python", "java", "javascript", "kotlin"};
