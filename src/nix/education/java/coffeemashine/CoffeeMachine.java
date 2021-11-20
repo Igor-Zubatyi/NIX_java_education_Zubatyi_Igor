@@ -47,83 +47,35 @@ public class CoffeeMachine {
     }
 }
 class CoffeeMachineRealization{
-    private int numberOfWater = 400;
-    public void setNumberOfWater(int numberOfWater){
-        this.numberOfWater = numberOfWater;
-    }
-    public int getNumberOfWater(){
-        return numberOfWater;
-    }
-    private  int numberOfMilk = 540;
-    public void setNumberOfMilk(int numberOfMilk){
-        this.numberOfMilk = numberOfMilk;
-    }
-    public int getNumberOfMilk(){
-        return numberOfMilk;
-    }
-    private int numberOfCoffeeBeans = 120;
-    public void setNumberOfCoffeeBeans(int numberOfCoffeeBeans){
-        this.numberOfCoffeeBeans = numberOfCoffeeBeans;
-    }
-    public int getNumberOfCoffeeBeans(){
-        return numberOfCoffeeBeans;
-
-    }
-    private int numberOfGlasses = 9;
-    public void setNumberOfGlasses(int numberOfGlasses){
-        this.numberOfGlasses = numberOfGlasses;
-    }
-    public int getNumberOfGlasses(){
-        return numberOfGlasses;
-    }
-    private int numberOfMoney = 540;
-    public void setNumberOfMoney(int numberOfMoney){
-        this.numberOfMoney = numberOfMoney;
-    }
-    public int getNumberOfMoney(){
-        return numberOfMoney;
-    }
+    Values values = new Values();
     void productsInformation() {
         System.out.println("The coffee machine has:");
-        System.out.println(getNumberOfWater() + " of water");
-        System.out.println(getNumberOfMilk() + " of milk");
-        System.out.println(getNumberOfCoffeeBeans() + " of coffee beans");
-        System.out.println(getNumberOfGlasses() + " disposable cups");
-        System.out.println(getNumberOfMoney() + " of money");
+        System.out.println(values.getNumberOfWater() + " of water");
+        System.out.println(values.getNumberOfMilk() + " of milk");
+        System.out.println(values.getNumberOfCoffeeBeans() + " of coffee beans");
+        System.out.println(values.getNumberOfGlasses() + " disposable cups");
+        System.out.println(values.getNumberOfMoney() + " of money");
     }
     int buy() {
         System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, 4 - back to main menu:");
         Scanner scanner = new Scanner(System.in);
         int point = scanner.nextInt();
         if (point == 1) {
-            if(getNumberOfWater() - 250 >= 0 && getNumberOfCoffeeBeans() - 16 >= 0 && getNumberOfGlasses() > 0) {
+            if(values.getNumberOfWater() - 250 >= 0 && values.getNumberOfCoffeeBeans() - 16 >= 0 && values.getNumberOfGlasses() > 0) {
                 System.out.println("I have enough resources, making you a coffee!");
-                setNumberOfWater(getNumberOfWater() - 250);
-                setNumberOfCoffeeBeans(getNumberOfCoffeeBeans() - 16);
-                setNumberOfMoney(getNumberOfMoney() + 4);
-                setNumberOfGlasses(getNumberOfGlasses() - 1);
-
+                coffeeMaking(250, 0, 16, 4);
             }
             else System.out.println("I don`t have enough resources");
         } else if (point == 2) {
-            if (getNumberOfWater() - 350 >= 0 && getNumberOfMilk() - 75 >= 0 && getNumberOfCoffeeBeans() - 20 >= 0 && getNumberOfGlasses() > 0) {
+            if (values.getNumberOfWater() - 350 >= 0 && values.getNumberOfMilk() - 75 >= 0 && values.getNumberOfCoffeeBeans() - 20 >= 0 && values.getNumberOfGlasses() > 0) {
                 System.out.println("I have enough resources, making you a coffee!");
-                setNumberOfWater(getNumberOfWater() - 350);
-                setNumberOfMilk(getNumberOfMilk() - 75);
-                setNumberOfCoffeeBeans(getNumberOfCoffeeBeans() - 20);
-                setNumberOfMoney(getNumberOfMoney() + 7);
-                setNumberOfGlasses(getNumberOfGlasses() - 1);
+                coffeeMaking(350, 75, 20, 7);
             } else {
                 System.out.println("I don`t have enough resources");
             }
         } else if (point == 3){
-            if (getNumberOfWater() - 200 >= 0 && getNumberOfMilk() - 100 >= 0 && getNumberOfCoffeeBeans() - 12 >= 0 && getNumberOfGlasses() > 0) {
-                System.out.println("I have enough resources, making you a coffee!");
-                setNumberOfWater( getNumberOfWater() - 200);
-                setNumberOfMilk(getNumberOfMilk() - 100);
-                setNumberOfCoffeeBeans(getNumberOfCoffeeBeans() - 12);
-                setNumberOfMoney(getNumberOfMoney() + 6);
-                setNumberOfGlasses(getNumberOfGlasses() - 1);
+            if (values.getNumberOfWater() - 200 >= 0 && values.getNumberOfMilk() - 100 >= 0 && values.getNumberOfCoffeeBeans() - 12 >= 0 && values.getNumberOfGlasses() > 0) {
+                coffeeMaking(200, 100, 12, 6);
             } else {
                 System.out.println("I don`t have enough resources");
             }
@@ -139,20 +91,27 @@ class CoffeeMachineRealization{
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many ml of watter you want to add:");
         int water = scanner.nextInt();
-        setNumberOfWater(getNumberOfWater() + water);
+        values.setNumberOfWater(values.getNumberOfWater() + water);
         System.out.println("Write how many ml of milk you want to add:");
         int milk = scanner.nextInt();
-        setNumberOfMilk(getNumberOfMilk() + milk);
+        values.setNumberOfMilk(values.getNumberOfMilk() + milk);
         System.out.println("Write how many grams of coffee beans you want to add:");
         int beans = scanner.nextInt();
-        setNumberOfCoffeeBeans(getNumberOfCoffeeBeans() + beans);
+        values.setNumberOfCoffeeBeans(values.getNumberOfCoffeeBeans() + beans);
         System.out.println("Write how many disposable coffee cups you want to add:");
         int glasses = scanner.nextInt();
-        setNumberOfGlasses(getNumberOfGlasses() + glasses);
+        values.setNumberOfGlasses(values.getNumberOfGlasses() + glasses);
         productsInformation();
     }
     void take(){
-        System.out.println("I gave you " + getNumberOfMoney());
-        setNumberOfMoney(0);
+        System.out.println("I gave you " + values.getNumberOfMoney());
+        values.setNumberOfMoney(0);
+    }
+    void coffeeMaking(int numberOfWater, int numberOfMilk, int numberOfCoffeeBeans, int numberOfMoney){
+        values.setNumberOfWater(values.getNumberOfWater() - numberOfWater);
+        values.setNumberOfCoffeeBeans(values.getNumberOfCoffeeBeans() - numberOfCoffeeBeans);
+        values.setNumberOfMilk(values.getNumberOfMilk() - numberOfMilk);
+        values.setNumberOfMoney(values.getNumberOfMoney() + numberOfMoney);
+        values.setNumberOfGlasses(values.getNumberOfGlasses() - 1);
     }
 }
