@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Hangman {
     private String randomWord = randomWord();
     private int attempts = 8;
-    public void hangman(){
+    public void startGame(){
         welcome();
         menu();
     }
