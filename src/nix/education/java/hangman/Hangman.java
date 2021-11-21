@@ -11,7 +11,6 @@ public class Hangman {
         welcome();
         menu();
     }
-
      void welcome() {
         System.out.println("HANGMAN");
     }
