@@ -36,4 +36,15 @@ public class Values {
     public int getNumberOfMoney(){
         return numberOfMoney;
     }
+    final static int QUANTITY_WATER_FOR_ESPRESSO = 250;
+    final static int QUANTITY_BEANS_FOR_ESPRESSO = 16;
+    final static int QUANTITY_MONEY_FOR_ESPRESSO = 4;
+    final static int QUANTITY_WATER_FOR_LATTE = 350;
+    final static int QUALITY_MILK_FOR_LATTE = 75;
+    final static int QUALITY_BEANS_FOR_LATTE = 20;
+    final static int QUANTITY_MONEY_FOR_LATTE = 4;
+    final static int QUANTITY_WATTER_FOR_CAPPUCCINO = 200;
+    final static int QUANTITY_MILK_FOR_CAPPUCCINO = 100;
+    final static int QUANTITY_BEANS_FOR_CAPPUCCINO = 12;
+    final static int QUANTITY_MONEY_FOR_CAPPUCCINO = 6;
 }

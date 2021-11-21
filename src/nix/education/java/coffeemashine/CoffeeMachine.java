@@ -61,21 +61,21 @@ class CoffeeMachineRealization{
         Scanner scanner = new Scanner(System.in);
         int point = scanner.nextInt();
         if (point == 1) {
-            if(values.getNumberOfWater() - 250 >= 0 && values.getNumberOfCoffeeBeans() - 16 >= 0 && values.getNumberOfGlasses() > 0) {
+            if(values.getNumberOfWater() - values.QUANTITY_WATER_FOR_ESPRESSO >= 0 && values.getNumberOfCoffeeBeans() - values.QUANTITY_BEANS_FOR_ESPRESSO >= 0 && values.getNumberOfGlasses() > 0) {
                 System.out.println("I have enough resources, making you a coffee!");
-                coffeeMaking(250, 0, 16, 4);
+                coffeeMaking(values.QUANTITY_WATER_FOR_ESPRESSO, 0, values.QUANTITY_BEANS_FOR_ESPRESSO, values.QUANTITY_MONEY_FOR_ESPRESSO);
             }
             else System.out.println("I don`t have enough resources");
         } else if (point == 2) {
-            if (values.getNumberOfWater() - 350 >= 0 && values.getNumberOfMilk() - 75 >= 0 && values.getNumberOfCoffeeBeans() - 20 >= 0 && values.getNumberOfGlasses() > 0) {
+            if (values.getNumberOfWater() - values.QUANTITY_WATER_FOR_LATTE >= 0 && values.getNumberOfMilk() - values.QUALITY_MILK_FOR_LATTE >= 0 && values.getNumberOfCoffeeBeans() - values.QUALITY_BEANS_FOR_LATTE >= 0 && values.getNumberOfGlasses() > 0) {
                 System.out.println("I have enough resources, making you a coffee!");
-                coffeeMaking(350, 75, 20, 7);
+                coffeeMaking(values.QUANTITY_WATER_FOR_LATTE, values.QUALITY_MILK_FOR_LATTE, values.QUALITY_BEANS_FOR_LATTE, values.QUANTITY_MONEY_FOR_LATTE);
             } else {
                 System.out.println("I don`t have enough resources");
             }
         } else if (point == 3){
-            if (values.getNumberOfWater() - 200 >= 0 && values.getNumberOfMilk() - 100 >= 0 && values.getNumberOfCoffeeBeans() - 12 >= 0 && values.getNumberOfGlasses() > 0) {
-                coffeeMaking(200, 100, 12, 6);
+            if (values.getNumberOfWater() - values.QUANTITY_WATTER_FOR_CAPPUCCINO >= 0 && values.getNumberOfMilk() - values.QUANTITY_MILK_FOR_CAPPUCCINO >= 0 && values.getNumberOfCoffeeBeans() - values.QUANTITY_BEANS_FOR_CAPPUCCINO >= 0 && values.getNumberOfGlasses() > 0) {
+                coffeeMaking(values.QUANTITY_WATTER_FOR_CAPPUCCINO, values.QUANTITY_MILK_FOR_CAPPUCCINO,  values.QUANTITY_BEANS_FOR_CAPPUCCINO, values.QUANTITY_MONEY_FOR_CAPPUCCINO);
             } else {
                 System.out.println("I don`t have enough resources");
             }
